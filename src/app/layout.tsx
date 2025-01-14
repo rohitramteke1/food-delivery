@@ -26,11 +26,11 @@ export default function RootLayout({
           disableTransitionOnChange
         > */}
         <ContextProvider>
-          <div className={"w-screen h-screen bg-white text-white relative " + jet.className}>
-            <div className="w-full h-full relative bg-gradient-to-br from-gray-800 via-gray-900 to-gray-950">
-              <div className="absolute z-10 inset-0 bg-gradient-to-r from-white/5 to-transparent backdrop-blur-xl">
+          <div className={"min-w-screen min-h-screen scrollbar bg-white text-white relative " + jet.className}>
+            <div className="min-w-screen min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-gray-950">
+              <div className="absolute w-full h-full z-10 inset-0 bg-gradient-to-r from-white/5 to-transparent backdrop-blur-xl">
               </div>
-                <div className="w-[95%] md:w-[90%] lg:w-[85%] xl:w-[80%] mx-auto relative z-20 p-8 text-white">
+                <div className="w-[95%] md:w-[90%] lg:w-[85%] xl:w-[80%] mx-auto relative z-20 p-4 sm:p-8 text-white">
                   <Navbar />
                   {children}
                 </div>
