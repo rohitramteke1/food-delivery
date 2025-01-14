@@ -2,11 +2,18 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { LuShoppingCart } from "react-icons/lu";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { context } from "@/context/contextProvider";
+import { motion } from "motion/react";
 
 export default function Card({ image, title, description, price }) {
   const {cartItems, setCartItems} = useContext(context);
+  const [isVibrating, setIsVibrating] = useState(false);
+
+  const triggerVibration = () => {
+      setIsVibrating(true);
+      setTimeout(()=>setIsVibrating(false),500);
+  }
 
   const addToCart = () => {
     setCartItems((prev) => [...prev, {
@@ -14,9 +21,9 @@ export default function Card({ image, title, description, price }) {
       title,
       description,
       price
-    }])
+    }]);
+    triggerVibration();
   }
-
 
     return (
       <article className="w-full overflow-clip h-full flex flex-col p-6 relative rounded-xl shadow-lg border border-white border-opacity-10 backdrop-blur-3xl bg-gray-300 bg-opacity-5">
@@ -35,7 +42,24 @@ export default function Card({ image, title, description, price }) {
               ${price}
             </p>
             <Button onClick={addToCart} variant="destructive" className="hover:shadow-lg border-[0.5px] border-transparent hover:border-gray-200 py-1">
-              <LuShoppingCart className="w-4 h-4" />
+            <motion.div
+                        animate={{
+                            rotate: isVibrating ? [0, -10, 10,-10,10,0] : 0,
+                            scale: isVibrating ? 1.3 : 1,
+                        }}
+                        transition={{
+                            rotate : {
+                                type: "tween",
+                                duration : 1,
+                            }
+                            ,scale : {
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 10,
+                        }}}
+                    >
+                        <LuShoppingCart className="w-6 h-6" />
+                    </motion.div>
             </Button>
           </div>
         </div>
