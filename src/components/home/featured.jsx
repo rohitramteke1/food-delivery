@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {satisfy} from "../../app/fonts";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function Featured() {
     return(
@@ -17,11 +18,13 @@ export default function Featured() {
                     New Stories
                 </h1>
                 <div className="flex justify-start gap-6 py-6">
-                    <Button className="bg-red-500 rounded-full">
-                        Menu
-                    </Button>
+                    <Link href={"/menu"}>
+                        <Button className="bg-red-500 rounded-full">
+                            Menu
+                        </Button>
+                    </Link>
                     <Button className="bg-white text-black rounded-full hover:text-white">
-                        Trending
+                        Book Table
                     </Button>
                 </div>
             </div>
