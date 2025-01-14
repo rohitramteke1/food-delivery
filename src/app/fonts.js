@@ -1,4 +1,4 @@
-import {JetBrains_Mono, Satisfy, Cutive_Mono,  Geist, Geist_Mono } from 'next/font/google';
+import { JetBrains_Mono, Satisfy, Cutive_Mono, Geist, Geist_Mono } from 'next/font/google';
 
 // export const jet = JetBrains_Mono({
 //     weight: "400",
@@ -21,10 +21,9 @@ import {JetBrains_Mono, Satisfy, Cutive_Mono,  Geist, Geist_Mono } from 'next/fo
 export const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
-  });
+});
 
 export const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
-  });
-
+});
