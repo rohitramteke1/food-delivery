@@ -15,7 +15,9 @@ export default function Home() {
         </p>
         <div className="w-full h-[325px] flex gap-5 py-3 overflow-x-auto">
           {foodProducts.map((item)=>(
-              <Card key={item.title} image={item.image} title={item.title} description={item.description} price={item.price} />
+              <div className="min-w-[230px] w-[230px]">
+                <Card key={item.title} image={item.image} title={item.title} description={item.description} price={item.price} />
+              </div>
           ))}
         </div>
       </section>

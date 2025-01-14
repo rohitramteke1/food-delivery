@@ -19,7 +19,7 @@ export default function Card({ image, title, description, price }) {
 
 
     return (
-      <article className="min-w-[230px] w-[230px] overflow-clip h-full flex flex-col p-6 relative rounded-lg shadow-lg border border-white border-opacity-10 backdrop-blur-3xl bg-gray-300 bg-opacity-5">
+      <article className="w-full overflow-clip h-full flex flex-col p-6 relative rounded-xl shadow-lg border border-white border-opacity-10 backdrop-blur-3xl bg-gray-300 bg-opacity-5">
         <div className="h-1/2 w-full relative mb-4">
             <Image src={image} alt="produtImg" fill className="object-contain" />
         </div>
