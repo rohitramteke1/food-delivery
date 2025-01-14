@@ -3,6 +3,7 @@ import {geistMono, geistSans, jet} from './fonts';
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
+import ContextProvider from "@/context/contextProvider";
 
 export const metadata: Metadata = {
   title: "Food Delivery",
@@ -18,12 +19,13 @@ export default function RootLayout({
     <html lang="en" >
       <body
       >
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+        > */}
+        <ContextProvider>
           <div className={"w-screen h-screen bg-white text-white relative " + jet.className}>
             <div className="w-full h-full relative bg-gradient-to-br from-gray-800 via-gray-900 to-gray-950">
               <div className="absolute z-10 inset-0 bg-gradient-to-r from-white/5 to-transparent backdrop-blur-xl">
@@ -34,7 +36,8 @@ export default function RootLayout({
                 </div>
             </div>
           </div>
-        </ThemeProvider>
+        </ContextProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
