@@ -14,6 +14,41 @@ h2 {
   @apply font-extrabold text-3xl;
 }
 
+
+@layer utilities {
+  /* Custom scrollbar for WebKit browsers */
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 9999px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Hide scrollbar arrows */
+  .scrollbar::-webkit-scrollbar-button {
+    display: none; /* Hide the arrows */
+  }
+
+  /* Custom scrollbar for Firefox */
+  .scrollbar {
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scrollbar-color: gray transparent;
+    scrollbar-arrow-color: transparent;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

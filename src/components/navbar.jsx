@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { context } from "@/context/contextProvider";
 import { useRouter } from "next/navigation";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -21,11 +22,11 @@ export default function Navbar() {
         })
     },[cartItems])
     return (
-        <nav className="w-full flex items-center justify-between pb-10">
+        <nav className="w-full sticky flex items-center justify-between pb-10">
             <h2 onClick={()=> router.push("/")} className={satisfy.className + " cursor-pointer flex items-center"}>
                 Wake <span className="text-red-500 px-3"> N </span> Bake
             </h2>
-            <ul className="flex gap-8 lg:gap-12 xl:gap-20 items-center text-gray-500  transition-all duration-200 justify-between">
+            <ul className="sm:flex gap-8 hidden lg:gap-12 xl:gap-20 items-center text-gray-500  transition-all duration-200 justify-between">
                 <li>
                     <Link href="/" className={"hover:text-gray-200" + (pathname === "/" ?  " text-gray-100 " : "")}>
                         home
@@ -42,7 +43,7 @@ export default function Navbar() {
                     </Link>
                 </li>
             </ul>
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-1 sm:gap-4 items-center">
                 <div onClick={()=>router.push("/cart")} className="flex gap-2 cursor-pointer hover:bg-black p-2 px-3 hover:shadow-md hover:shadow-gray-600 rounded-full">
                     <LuShoppingCart className="w-6 h-6" />
                     <p>
@@ -50,9 +51,13 @@ export default function Navbar() {
                     </p>
                 </div>
                 <div>
-                    <Button className="bg-red-500 text-white rounded-full hover:bg-red-500 hover:shadow-md hover:shadow-gray-600" >
+                    <Button className="bg-red-500 hidden sm:block text-white rounded-full hover:bg-red-500 hover:shadow-md hover:shadow-gray-600" >
                         sign-Up
                     </Button>
+                    <Button className="bg-red-500 block sm:hidden text-white rounded-full hover:bg-red-500 hover:shadow-md hover:shadow-gray-600" >
+                        <GiHamburgerMenu className="w-6 h-6" />
+                    </Button>
+
                 </div>
                 {/* <div>
                     <ModeToggle />

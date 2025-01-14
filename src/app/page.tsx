@@ -8,12 +8,12 @@ export default function Home() {
   return (
     <div className={"w-full h-full"}>
       <Featured />
-      <section className="w-full">
+      <section className="w-full py-4">
         <p className="flex gap-2 items-center mb-5 border-l-4 border-white px-3">
           Trending
           <FaFireFlameCurved className="w-5 h-5 fill-red-500" />
         </p>
-        <div className="w-full h-[300px] flex gap-5  overflow-x-auto">
+        <div className="w-full h-[325px] flex gap-5 py-3 overflow-x-auto">
           {foodProducts.map((item)=>(
               <Card key={item.title} image={item.image} title={item.title} description={item.description} price={item.price} />
           ))}

@@ -19,15 +19,15 @@ export default function Card({ image, title, description, price }) {
 
 
     return (
-      <article className="w-full overflow-clip h-full flex flex-col p-6 relative rounded-lg shadow-lg border border-white border-opacity-10 backdrop-blur-3xl bg-gray-300 bg-opacity-5">
+      <article className="min-w-[230px] w-[230px] overflow-clip h-full flex flex-col p-6 relative rounded-lg shadow-lg border border-white border-opacity-10 backdrop-blur-3xl bg-gray-300 bg-opacity-5">
         <div className="h-1/2 w-full relative mb-4">
             <Image src={image} alt="produtImg" fill className="object-contain" />
         </div>
-        <div className="h-1/2 flex flex-col overflow-clip w-full">
-          <h3 className="w-full text-nowrap">
+        <div className="h-1/2 flex flex-col justify-between w-full">
+          <h3 className="w-full text-nowrap overflow-ellipsis">
             {title}
           </h3>
-          <p className="line-clamp-2 text-[#999999]">
+          <p className="line-clamp-2 text-[#999999] break-words">
             {description}
           </p>
           <div className="flex w-full items-center justify-between">
