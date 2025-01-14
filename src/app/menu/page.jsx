@@ -34,8 +34,8 @@ export default function Page() {
             <div className="w-full h-full py-6">
                 <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-col-3 gap-6 py-3">
                     {filtered.map((item)=>(
-                        <div className="h-[325px]">
-                            <Card key={item.title} image={item.image} title={item.title} description={item.description} price={item.price} />
+                        <div className="h-[325px]" key={item.title} >
+                            <Card image={item.image} title={item.title} description={item.description} price={item.price} />
                         </div>
                     ))}
                 </div>
