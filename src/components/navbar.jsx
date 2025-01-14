@@ -9,18 +9,28 @@ import { useContext, useEffect, useState } from "react";
 import { context } from "@/context/contextProvider";
 import { useRouter } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { motion } from "motion/react";
+import { type } from "os";
 
 export default function Navbar() {
     const pathname = usePathname();
     const {cartItems} = useContext(context);
     const [itemCount, setItemCount] = useState(0);
     const router = useRouter();
+    const [isVibrating, setIsVibrating] = useState(false);
+
+    const triggerVibration = () => {
+        setIsVibrating(true);
+        setTimeout(()=>setIsVibrating(false),500);
+    }
 
     useEffect(()=>{
         setItemCount(()=>{
             return cartItems.length;
-        })
-    },[cartItems])
+        });
+        triggerVibration();
+    },[cartItems]);
+
     return (
         <nav className="w-full sticky flex items-center justify-between pb-10">
             <h2 onClick={()=> router.push("/")} className={satisfy.className + " cursor-pointer flex items-center"}>
@@ -45,7 +55,24 @@ export default function Navbar() {
             </ul>
             <div className="flex gap-1 sm:gap-4 items-center">
                 <div onClick={()=>router.push("/cart")} className="flex gap-2 cursor-pointer hover:bg-black p-2 px-3 hover:shadow-md hover:shadow-gray-600 rounded-full">
-                    <LuShoppingCart className="w-6 h-6" />
+                    <motion.div
+                        animate={{
+                            rotate: isVibrating ? [0, -10, 10,-10,10,0] : 0,
+                            scale: isVibrating ? 1.3 : 1,
+                        }}
+                        transition={{
+                            rotate : {
+                                type: "tween",
+                                duration : 1,
+                            }
+                            ,scale : {
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 10,
+                        }}}
+                    >
+                        <LuShoppingCart className="w-6 h-6" />
+                    </motion.div>
                     <p>
                         {!!itemCount ? (itemCount) : ""}
                     </p>
